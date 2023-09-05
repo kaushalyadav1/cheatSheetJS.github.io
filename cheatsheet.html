@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cheatsheet.css">
+    <link rel="stylesheet" href="prism.css">
+    <script src="prism.js"></script>
+    <title>JavaScript Cheatsheet by Kaushal</title>
+    <style>
+
+            @keyframes fade-out {
+                0% { opacity: 0; }
+                50% { opacity: 0.8; }
+                100% { opacity: 1; }
+            }
+
+            ol{
+                animation: fade-out 2s;
+            }
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <span class="logo"><img src="copy-icon-9.png" alt=""></span>
+        <div class="content center">
+            This JavaScript Cheatsheet is For You!
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <ol>
+
+                <h2>JavaScript Basics</h2> <br>
+                Set of JavaScript basic syntax to add, execute and write basic programming paradigms in Javascript. <br> <br>
+
+                <li><b>On Page Script : </b>Adding internal JavaScript to HTML
+                    <pre class="language-js"><code>&lt;script type="text/javascript"&gt; //JS code goes here &lt;/script&gt;</code></pre>
+                </li> <br>
+
+                <li><b>External JS File : </b>Adding external JavaScript to HTML
+                    <pre class="language-js"><code>&lt;script src="filename.js"&gt;&lt;/script&gt;</code></pre>
+                </li> <br>
+
+                <li><b>JavaScript Comments : </b>JavaScript comments can be used to explain JavaScript code, and to make it more readable. <br><br>
+                    JavaScript comments can also be used to prevent execution, when testing alternative code. <br> <br>
+                    <b>Single Line Comments</b>
+                    <pre class="language-js"><code>&lt;script&gt;
+    //Single Line Comment
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>Multi-line Comments</b>
+                    <pre class="language-js"><code>&lt;p id="myP"&gt;&lt;/p&gt;
+&lt;script&gt;
+    /*
+    The code below will change
+    the heading with id = "myH"
+    and the paragraph with id = "myP"
+    */
+    document.getElementById("myP").innerHTML = "My first paragraph.";
+&lt;/script&gt;</code></pre>
+
+                </li> <br>
+
+                <li><b>JavaScript Output</b> <br> <br>
+                <b>Using innerHTML : </b> The id attribute defines the HTML element. The innerHTML property defines the HTML content: <br> <br>
+                To access an HTML element, JavaScript can use the document.getElementById(id) method. <br>
+                    <pre class="language-js"><code>&lt;h2&gt;My First Web Page&lt;/h2&gt;
+&lt;p&gt;My First Paragraph.&lt;/p&gt;
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    document.getElementById("demo").innerHTML = 5 + 6;
+&lt;/script&gt;</code></pre>
+                    <b>Note : </b> Changing the innerHTML property of an HTML element is a common way to display data in HTML. <br><br>
+
+                <b>Using document.write()</b>
+                    <pre class="language-js"><code>&lt;p&gt;Never call document.write after the document has finished loading.It will overwrite the whole document.&lt;/p&gt;
+
+&lt;script&gt;
+    document.write(5 + 6);
+&lt;/script&gt;</code></pre>
+                    <b>Note : </b> Using document.write() after an HTML document is loaded, will delete all existing HTML: <br> <br>
+                    The document.write() method should only be used for testing. <br><br> 
+
+                <b>Using window.alert()</b>
+                    <pre class="language-js"><code>&lt;h2&gt;alert&lt;/h2&gt;
+&lt;p&gt;My first alert message.&lt;/p&gt;
+
+&lt;script&gt;
+    window.alert(5 + 6);
+&lt;/script&gt;</code></pre> 
+                    <b>Note : </b> You can skip the window keyword. <br><br>
+                    In JavaScript, the window object is the global scope object. This means that variables, properties, and methods by default belong to the window object. This also means that specifying the window keyword is optional: <br><br>
+
+                <b>Using console.log()</b>
+                    <pre class="language-js"><code>&lt;h2&gt;Activate Debugging&lt;/h2&gt;
+&lt;p&gt;F12 on your keyboard will activate debugging.&lt;/p&gt;
+&lt;p&gt;Then select "Console" in the debugger menu.&lt;/p&gt;
+&lt;p&gt;Then click Run again.&lt;/p&gt;
+
+&lt;script&gt;
+    console.log(5 + 6);
+&lt;/script&gt;</code></pre>
+                    <b>Note : </b> For debugging purposes, you can call the console.log() method in the browser to display data. <br><br>
+
+                <b>JavaScript Print</b>
+                    <pre class="language-js"><code>&lt;h2&gt;The window.print() Method&lt;/h2&gt;
+
+&lt;p&gt;Click the button to print the current page.&lt;/p&gt;
+
+&lt;button onclick="window.print()"&gt;Print this page&lt;/button&gt;</code></pre>
+                    <b>Note : </b> JavaScript does not have any print object or print methods. <br><br>
+                    You cannot access output devices from JavaScript. <br><br>                 
+                    The only exception is that you can call the window.print() method in the browser to print the content of the current window.
+                </li> <br>
+
+                <li><b>JavaScript Variables : </b>Variables are Containers for Storing Data. <br><br>
+                    JavaScript Variables can be declared in 4 ways: <br>
+
+                    Automatically <br>
+                    Using var <br>
+                    Using let <br>
+                    Using const <br> <br>
+
+                    <b>When to Use var, let, or const?</b> <br>
+                    Always declare variables <br>
+
+                    Always use const if the value should not be changed <br>
+
+                    Always use const if the type should not be changed (Arrays and Objects) <br>
+
+                    Only use let if you can't use const <br>
+
+                    Only use var if you MUST support old browsers. <br> <br>
+
+                    <b>Automatically</b>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    x = 5;
+    y = 6;
+    z = x + y;
+    document.getElementById("demo").innerHTML =
+    "The value of z is: " + z;
+&lt;/script&gt;</code></pre>
+
+                    <b>Note :- </b>It's a good programming practice to declare all variables at the beginning of a script. <br><br>
+
+                    <b>Using var</b> Variables declared with the var keyword can NOT have block scope. <br>
+                    Variables declared inside a { } block can be accessed from outside the block. <br>
+                    Redeclaring a variable using the var keyword can impose problems. <br>
+                    Redeclaring a variable inside a block will also redeclare the variable outside the block:
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    var x = 5;
+    var y = 6;
+    var z = x + y;
+    document.getElementById("demo").innerHTML =
+    "The value of z is: " + z;
+&lt;/script&gt;</code></pre>
+                    <b>Note :- </b>The var keyword was used in all JavaScript code from 1995 to 2015. <br>
+
+                    The let and const keywords were added to JavaScript in 2015. <br>
+                    
+                    The var keyword should only be used in code written for older browsers. <br> <br>
+
+                    <b>Using let</b> The let keyword was introduced in ES6 (2015) <br> 
+                    Variables defined with let cannot be Redeclared <br>                    
+                    Variables defined with let must be Declared before use <br> 
+                    Variables defined with let have Block Scope <br> 
+                    Variables defined with let can not be redeclared. <br>
+                    You can not accidentally redeclare a variable declared with let. <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let x = 5;
+    let y = 6;
+    let z = x + y;
+    document.getElementById("demo").innerHTML =
+    "The value of z is: " + z;
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>Using const </b>The const keyword was introduced in ES6 (2015) <br>
+                    Variables defined with const cannot be Redeclared <br>                    
+                    Variables defined with const cannot be Reassigned <br>                   
+                    Variables defined with const have Block Scope <br>
+                    A const variable cannot be reassigned: <br> <br>
+                    <b>JavaScript const variables must be assigned a value when they are declared:</b> <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const x = 5;
+    const y = 6;
+    const z = x + y;
+    document.getElementById("demo").innerHTML =
+    "The value of z is: " + z;
+&lt;/script&gt;</code></pre>
+                    
+                        <b>Note :- When to use JavaScript const? </b> <br>
+                        
+                        Always declare a variable with const when you know that the value should not be changed. <br> <br>
+                        
+                        Use const when you declare: <br>
+                        
+                        A new Array <br>
+                        A new Object <br>
+                        A new Function <br>
+                        A new RegExp <br>
+                </li> <br>
+
+                <li><b>JavaScript Data Types : </b>A JavaScript variable can hold any type of data. <br>
+                    In programming, data types is an important concept. <br>
+                    To be able to operate on variables, it is important to know something about the type. <br> <br>
+                    JavaScript has 8 Datatypes <br> <br>
+                    String <br>
+                    Number <br>
+                    Bigint <br>
+                    Boolean <br>
+                    Undefined <br>
+                    Null <br>
+                    Symbol <br>
+                    Object <br> <br>
+
+                    The Object Datatype <br>
+                    The object data type can contain: <br> <br>
+
+                    An object <br>
+                    An array <br>
+                    A date <br>
+                    <pre class="language-js"><code>&lt;script&gt;
+    // Numbers:
+    let length = 16;
+    let weight = 7.5;
+
+    // Strings:
+    let color = "Yellow";
+    let lastName = "Johnson";
+
+    // Booleans
+    let x = true;
+    let y = false;
+
+    // Object:
+    const person = {firstName:"John", lastName:"Doe"};
+
+    // Array object:
+    const cars = ["Saab", "Volvo", "BMW"];
+
+    // Date object:
+    const date = new Date("2022-03-25");
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>JavaScript Strings : </b>A string (or a text string) is a series of characters like "Kaushal Jacker". <br><br>
+                    Strings are written with quotes. You can use single or double quotes: <br><br>
+                    You can use quotes inside a string, as long as they don't match the quotes surrounding the string: <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let carName1 = "Volvo XC60";
+    let carName2 = 'Volvo XC90';
+    let answer1 = "It's alright";
+
+    document.getElementById("demo").innerHTML =
+    carName1 + "&lt;br&gt;" + 
+    carName2 + "&lt;br&gt;" + 
+    answer1; 
+&lt;/script&gt;</code></pre>
+                    <b>Note :- </b>When adding a number and a string, JavaScript will treat the number as a string. <br> <br>
+
+                    <b>JavaScript Numbers : </b>All JavaScript numbers are stored as decimal numbers (floating point). <br> <br>
+                    Numbers can be written with, or without decimals: <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let x1 = 34.00;
+    let x2 = 34;
+    let x3 = 3.14;
+
+    document.getElementById("demo").innerHTML =
+    x1 + "&lt;br&gt;" + x2 + "&lt;br&gt;" + x3;
+&lt;/script&gt;</code></pre>
+
+                    <b>Note :- </b>Most programming languages have many number types: <br>
+                    Whole numbers (integers): <br>
+                    <b>byte (8-bit), short (16-bit), int (32-bit), long (64-bit)</b>    <br>                 
+                    Real numbers (floating-point): <br>
+                    <b>float (32-bit), double (64-bit)</b>.   <br>                 
+                    Javascript numbers are always one type: <br>
+                    <b>double (64-bit floating point).</b> <br>
+                    
+                    <br>
+
+                    <b>JavaScript BigInt : </b>All JavaScript numbers are stored in a a 64-bit floating-point format. <br> <br>
+
+                    JavaScript BigInt is a new datatype (ES2020) that can be used to store integer values that are too big to be represented by a normal JavaScript Number. <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;p&gt;You cannot perform math between a BigInt type and a Number type.&lt;/p&gt;
+
+&lt;script&gt;
+    let x = BigInt("123456789012345678901234567890");
+    document.getElementById("demo").innerHTML = x; 
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>JavaScript Booleans : </b>Booleans can only have two values: true or false. <br> 
+
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let x = 5;
+    let y = 5;
+    let z = 6;
+
+    document.getElementById("demo").innerHTML =
+    (x == y) + "&lt;br&gt;" + (x == z);
+&lt;/script&gt;</code></pre>
+
+                        <b>Note :- </b> Booleans are often used in conditional testing. <br><br>
+
+                    <b>Undefined : </b>In JavaScript, a variable without a value, has the value undefined. The type is also undefined. <br> <br>
+                    Any variable can be emptied, by setting the value to undefined. The type will also be undefined. <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let car = "Volvo";
+    car = undefined;
+
+    document.getElementById("demo").innerHTML = car + "&lt;br&gt;" + typeof car;
+&lt;/script&gt;</code></pre>
+
+                </li> <br>
+
+                <li><b>Functions</b> : A JavaScript function is a block of code designed to perform a particular task. <br><br>
+                    A JavaScript function is executed when "something" invokes it (calls it). <br><br>
+                    A JavaScript function is defined with the function keyword, followed by a name, followed by parentheses (). <br> <br>
+                    Function names can contain letters, digits, underscores, and dollar signs (same rules as variables). <br> <br>
+                    The parentheses may include parameter names separated by commas:
+                    (parameter1, parameter2, ...) <br> <br>
+                    The code to be executed, by the function, is placed inside curly brackets: {} <br>
+                    <pre class="language-js"><code>&lt;h1&gt;JavaScript Functions&lt;/h1&gt;
+&lt;p&gt;Call a function which performs a calculation and returns the result:&lt;/p&gt;
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    function myFunction(p1, p2) {
+        return p1 * p2;
+    }
+
+    let result = myFunction(4, 3);
+    document.getElementById("demo").innerHTML = result;
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>JavaScript Arrow Function : </b> Arrow functions were introduced in ES6. <br> <br>
+                    Arrow functions allow us to write shorter function syntax: <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let hello = "";
+
+    hello = () =&gt; {
+    return "Hello World!";
+    }
+
+    document.getElementById("demo").innerHTML = hello();
+&lt;/script&gt;</code></pre>
+
+                </li> <br>
+
+                <li><b>Conditional Statements : </b>Conditional statements are used to perform operations based on some conditions. <br> <br>
+                    <b>In JavaScript we have the following conditional statements:</b> <br>
+                    Use <b>if</b> to specify a block of code to be executed, if a specified condition is true <br>
+                    Use <b>else</b> to specify a block of code to be executed, if the same condition is false <br>
+                    Use <b>else if</b> to specify a new condition to test, if the first condition is false <br>
+                    Use <b>switch</b> to specify many alternative blocks of code to be executed <br><br>
+                    <b>If Statement</b> : The block of code to be executed, when the condition specified is true.. <br><br>
+                    Use the if statement to specify a block of JavaScript code to be executed if a condition is true. <br>
+                <pre class="language-js"><code>if (condition) {
+    // block of code to be executed if the condition is true
+}</code></pre>
+                <b>Note :- </b>if is in lowercase letters. Uppercase letters (If or IF) will generate a JavaScript error. <br> <br>
+
+                Example:
+                <pre class="language-js"><code>&lt;p id="demo"&gt;Good Evening!&lt;/p&gt;
+
+&lt;script&gt;
+    let x = 2;
+    if (x &lt; 18) {
+    document.getElementById("demo").innerHTML = "Good day!";
+    }
+&lt;/script&gt;</code></pre> <br>
+
+<b>If-else Statement</b> : If the condition for the if block is false, then the else block will be executed.
+<pre class="language-js"><code>if (condition) {
+// block of code to be executed if the condition is true
+} else {
+// block of code to be executed if the condition is false
+}</code></pre>
+
+                Example:
+                <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const hour = new Date().getHours(); 
+    let greeting;
+    
+    if (hour &lt; 18) {
+        greeting = "Good day!!!!";
+    } else {
+        greeting = "Good evening!!!!";
+    }
+    
+    document.getElementById("demo").innerHTML = greeting;
+&lt;/script&gt;</code></pre> <br>
+
+    <b>Else-if Statement</b> : A basic if-else ladder
+<pre class="language-js"><code>if (condition1) {
+// block of code to be executed if condition1 is true
+} else if (condition2) {
+// block of code to be executed if the condition1 is false and condition2 is true
+} else {
+// block of code to be executed if the condition1 is false and condition2 is false
+}</code></pre>
+
+        Example:
+    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const time = new Date().getHours();
+    let greeting;
+    if (time &lt; 10) {
+    greeting = "Good morning";
+    } else if (time &lt; 20) {
+    greeting = "Good day";
+    } else {
+    greeting = "Good evening";
+    }
+    document.getElementById("demo").innerHTML = greeting;
+&lt;/script&gt;</code></pre> <br>
+
+                <b>Switch Statement</b> : The switch statement is used to perform different actions based on different conditions. <br><br>
+                Use the switch statement to select one of many code blocks to be executed. <br> <br>
+                <b>This is how it works:</b> <br>
+                The switch expression is evaluated once. <br>
+                The value of the expression is compared with the values of each case. <br>
+                If there is a match, the associated block of code is executed. <br>
+                If there is no match, the default code block is executed. <br>
+                <pre class="language-js"><code>switch (expression) {
+    case value1:
+        // code block
+        break;
+    case value2:
+        // code block
+        break;
+    default:
+        // code block
+}</code></pre>
+
+            Example:
+            <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let day;
+    switch (new Date().getDay()) {
+    case 0:
+        day = "Sunday";
+        break;
+    case 1:
+        day = "Monday";
+        break;
+    case 2:
+        day = "Tuesday";
+        break;
+    case 3:
+        day = "Wednesday";
+        break;
+    case 4:
+        day = "Thursday";
+        break;
+    case 5:
+        day = "Friday";
+        break;
+    case  6:
+        day = "Saturday";
+    }
+    document.getElementById("demo").innerHTML = "Today is " + day;
+&lt;/script&gt;</code></pre> 
+                </li> <br>
+
+                <li><b>Iterative Statements (Loops) : </b> Iterative statement facilitates programmer to execute any block of code lines repeatedly and can be controlled as per conditions added by the programmer. <br><br>
+                    <b>For Loop</b> : For loop syntax in javascript
+                <pre class="language-js"><code>for (initialization; condition; updation) {
+    // code block to be executed
+}</code></pre>
+
+            Example : 
+            <pre class="language-js"><code>for (let i = 0; i < 5; i++) {
+    text += "Iteration number: " + i + "<br>";
+}</code></pre> <br>
+
+                <b>While loop</b> : Runs the code till the specified condition is true
+                <pre class="language-js"><code>while (condition) {
+    // code block to be executed
+}</code></pre>
+
+            <p>Example : </p>
+            <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let text = "";
+    let i = 0;
+    while (i &lt; 10) {
+    text += "&lt;br&gt;The number is " + i;
+    i++;
+    }
+    document.getElementById("demo").innerHTML = text;
+&lt;/script&gt;</code></pre> <br>
+
+                <b>Do While loop</b> : A do while loop is executed at least once despite the condition being true or false
+                <pre class="language-js"><code>do {
+    // run this code in block
+    i++;
+} while (condition);</code></pre> 
+
+            <p>Example : </p>
+            <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let text = ""
+    let i = 0;
+
+    do {
+        text += "&lt;br&gt;The number is " + i;
+        i++;
+    }
+    while (i &lt; 9);  
+
+    document.getElementById("demo").innerHTML = text;
+&lt;/script&gt;</code></pre> <br>
+
+                </li> <br>
+
+                <li><b>Strings : </b>The string is a sequence of characters that is used for storing and managing text data. <br><br>
+                    All string methods return a new string. They don't modify the original string. <br><br>
+                    Strings are immutable: Strings cannot be changed, only replaced. <br> <br>
+                    <b>length method : </b>The length property returns the length of a string:
+                    <pre class="language-js"><code>str.length()</code></pre>
+
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p&gt;The length of the string is:&lt;/p&gt;
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+let text = "Kaushal Jacker";
+document.getElementById("demo").innerHTML = text.length;
+&lt;/script&gt;</code></pre> 
+
+                    <b>Note :- </b>JavaScript counts positions from zero. <br>
+                    First position is 0. <br>
+                    Second position is 1.<br> <br>
+
+                    <b>toUpperCase method : </b>A string is converted to upper case with toUpperCase(): <br>
+                    <pre class="language-js"><code>str.toUpperCase()</code></pre> 
+
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;button onclick="myFunction()"&gt;Try it&lt;/button&gt;
+
+&lt;p id="demo"&gt;SpecBits!&lt;/p&gt;
+
+&lt;script&gt;
+    function myFunction() {
+        let text = document.getElementById("demo").innerHTML;
+        document.getElementById("demo").innerHTML =
+        text.toUpperCase();
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>toLowerCase method : </b>A string is converted to lower case with toLowerCase(): <br>
+                    <pre class="language-js"><code>str.toLowerCase()</code></pre> 
+
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;button onclick="myFunction()"&gt;Try it&lt;/button&gt;
+
+&lt;p id="demo"&gt;SpecBits!&lt;/p&gt;
+
+&lt;script&gt;
+    function myFunction() {
+        let text = document.getElementById("demo").innerHTML;
+        document.getElementById("demo").innerHTML =
+        text.toLowerCase();
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>charAt method : </b>Returns the character from the specified index.
+                    <pre class="language-js"><code>str.charAt(3)</code></pre>
+
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p&gt;The charAt() method returns the character at a given position in a string:&lt;/p&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    var text = "Kaushal Jacker";
+    document.getElementById("demo").innerHTML = text.charAt(2);
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>concat method : </b>Joins two or more strings together.
+                    <pre class="language-js"><code>str1.concat(str2)</code></pre>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let text1 = "Hello";
+    let text2 = "World!";
+    let text3 = text1.concat(" ",text2);
+    document.getElementById("demo").innerHTML = text3;
+&lt;/script&gt;</code></pre>
+                    <b>Note :- </b> The concat() method can be used instead of the plus operator. <br> <br>
+
+                    <b>slice method : </b>slice() extracts a part of a string and returns the extracted part in a new string. <br><br>
+                    The method takes 2 parameters: start position, and end position (end not included). <br>
+                    <pre class="language-js"><code>str.slice(0,5)</code></pre>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;script&gt;
+    let text = "Apple, Banana, Kiwi";
+    let part = text.slice(7,13);
+    document.getElementById("demo").innerHTML = part; 
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>substring method : </b>Returns a substring of a string containing characters from the specified indices. <br><br>
+                    substring() is similar to slice(). <br><br>
+                    The difference is that start and end values less than 0 are treated as 0 in substring(). <br>
+                    <pre class="language-js"><code>str.substring(0,5)</code></pre>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let str = "Apple, Orange, Kiwi";
+    document.getElementById("demo").innerHTML = str.substring(7,13);
+&lt;/script&gt;</code></pre>
+                    <b>Note :- </b>If you omit the second parameter, substring() will slice out the rest of the string. <br> <br>
+
+                    <b>substr method : </b>substr() is similar to slice(). <br><br>
+                    The difference is that the second parameter specifies the length of the extracted part. <br>
+                    <pre class="language-js"><code>str.substr(2,5)</code></pre>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let str = "Apple, Pineapple, Kiwi";
+    document.getElementById("demo").innerHTML = str.substr(7,6);
+&lt;/script&gt;</code></pre>
+                    <b>Note :- </b>If you omit the second parameter, substr() will slice out the rest of the string. <br> 
+                    If the first parameter is negative, the position counts from the end of the string. <br><br>
+
+                    <b>replace method : </b>The replace() method replaces a specified value with another value in a string: <br>
+                    <pre class="language-js"><code>string.replace(searchValue, newValue)</code></pre>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;button onclick="myFunction()"&gt;Try it&lt;/button&gt;
+
+&lt;p id="demo"&gt;Please visit SpecBits and SpecBits!&lt;/p&gt;
+
+&lt;script&gt;
+    function myFunction() {
+    let text = document.getElementById("demo").innerHTML; 
+    document.getElementById("demo").innerHTML =
+    text.replace("SpecBits","Developersarmy");
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>To replace case insensitive, use a regular expression with an /i flag (insensitive):</b>
+                    <pre class="language-js"><code>&lt;button onclick="myFunction()"&gt;Try it&lt;/button&gt;
+
+&lt;p id="demo"&gt;Please visit SpecBits!&lt;/p&gt;
+
+&lt;script&gt;
+function myFunction() {
+    let text = document.getElementById("demo").innerHTML; 
+    document.getElementById("demo").innerHTML =
+    text.replace(/SPECBITS/i,"Developersarmy");
+}
+&lt;/script&gt;</code></pre>
+                    <b>Note :- </b>
+                        The replace() method does not change the string it is called on. <br>
+
+                        The replace() method returns a new string. <br>
+
+                        The replace() method replaces only the first match <br>
+
+                        <b>If you want to replace all matches, use a regular expression with the /g flag set</b>. <br>
+
+                        By default, the replace() method replaces only the first match: <br> <br>
+
+                    <b>replaceAll method : </b>In 2021, JavaScript introduced the string method replaceAll(): <br> <br>
+                    The replaceAll() method allows you to specify a regular expression instead of a string to be replaced. <br><br>
+                    If the parameter is a regular expression, the global flag (g) must be set, otherwise a TypeError is thrown. <br>
+                    <pre class="language-js"><code>string.replaceAll(searchValue, newValue)</code></pre>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let text = "I love cats. Cats are very easy to love. Cats are very popular."
+    text = text.replaceAll("Cats","Dogs");
+    text = text.replaceAll("cats","dogs");
+
+    document.getElementById("demo").innerHTML = text;
+&lt;/script&gt;</code></pre>
+
+                    <b>Note :- </b>
+                        replaceAll() is an ES2021 feature. <br>
+                        replaceAll() does not work in Internet Explorer. <br> <br>
+
+                    <b>trim method : </b>The trim() method removes whitespace from both sides of a string:
+                    <pre class="language-js"><code>string.trim()</code></pre>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let text1 = "     Hello World!     ";
+    let text2 = text1.trim();
+
+    document.getElementById("demo").innerHTML =
+    "Length text1 = " + text1.length + "&lt;br&gt;Length text2 = " + text2.length;
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>trimStart method : </b>ECMAScript 2019 added the String method trimStart() to JavaScript. <br><br>
+                    The trimStart() method works like trim(), but removes whitespace only from the start of a string. <br>
+                    <pre class="language-js"><code>string.trimStart()</code></pre>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let text1 = "     Hello World!     ";
+    let text2 = text1.trimStart();
+
+    document.getElementById("demo").innerHTML =
+    "Length text1 = " + text1.length + "&lt;br&gt;Length text2 = " + text2.length;
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>trimEnd method : </b>ECMAScript 2019 added the string method trimEnd() to JavaScript. <br><br>
+                    The trimEnd() method works like trim(), but removes whitespace only from the end of a string. <br>
+                    <pre class="language-js"><code>string.trimEnd()</code></pre>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let text1 = "     Hello World!     ";
+    let text2 = text1.trimEnd();
+
+    document.getElementById("demo").innerHTML =
+    "Length text1 = " + text1.length + "&lt;br&gt;Length text2 = " + text2.length;
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>Converting a String to an Array</b> <br> <br>
+                    <b>split method : </b>A string can be converted to an array with the split() method: <br><br>
+                    The split() method splits a string into an array of substrings. <br><br>
+                    The split() method returns the new array. <br><br>
+                    The split() method does not change the original string. <br><br>
+                    If (" ") is used as separator, the string is split between words. <br>
+                    <pre class="language-js"><code>string.split(separator, limit)</code></pre>
+                    <b>Note :- </b> separator & limit are Optional. <br> <br>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let text = "a,b,c,d,e,f";
+    const myArray = text.split(",");
+    document.getElementById("demo").innerHTML = myArray[4];
+&lt;/script&gt;</code></pre>
+
+                    <b>Note : </b>If the separator is omitted, the returned array will contain the whole string in index [0]. <br>
+
+                    If the separator is "", the returned array will be an array of single characters: <br><br>
+
+                    <b>String Search : </b> <br> <br>
+                    <b>indexOf method : </b>The indexOf() method returns the index (position) the first occurrence of a string in a string: <br>
+                    <pre class="language-js"><code>string.indexOf(searchvalue, start)</code></pre> 
+                    <b>Note :- </b> start is optional <br> The position to start from (default is 0). <br><br>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p&gt;The position of the first occurrence of "locate" is:&lt;/p&gt;
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let text = "Please locate where 'locate' occurs!";
+    let index = text.indexOf("locate");
+    document.getElementById("demo").innerHTML = index; 
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>lastIndexOf method : </b>The lastIndexOf() method returns the index of the last occurrence of a specified text in a string: <br>
+                    <pre class="language-js"><code>string.lastIndexOf(searchvalue, start)</code></pre> 
+                    <b>Note :- </b> start is optional <br> The position to start from (default is 0). <br><br>
+                    <b>Note :- </b> Both indexOf(), and lastIndexOf() return -1 if the text is not found: <br><br>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p&gt;The position of the first occurrence of "locate" is:&lt;/p&gt;
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let text = "Please locate where 'locate' occurs!";
+    let index = text.lastIndexOf("locate");
+    document.getElementById("demo").innerHTML = index;
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>search method : </b>The search() method searches a string for a string (or a regular expression) and returns the position of the match:
+                    <pre class="language-js"><code>string.search(searchValue)</code></pre>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p&gt;The position of the first occurrence of "locate" is:&lt;/p&gt;
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let text = "Please locate where 'locate' occurs!";
+    let index = text.search("locate");
+    document.getElementById("demo").innerHTML = index; 
+&lt;/script&gt;</code></pre>
+
+                    <b>Note :- </b> The search() method cannot take a second start position argument. <br><br>
+                    The indexOf() method cannot take powerful search values (regular expressions). <br><br>
+
+                    <b>match method : </b>The match() method returns an array containing the results of matching a string against a string (or a regular expression).
+                    <pre class="language-js"><code>string.match(match)</code></pre>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p&gt;Perform a global, case-insensitive search for "ain":&lt;/p&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let text = "The rain in SPAIN stays mainly in the plain"; 
+    const myArr = text.match(/ain/gi);
+    document.getElementById("demo").innerHTML = myArr.length + " " + myArr;
+&lt;/script&gt;</code></pre>
+
+                    <b>Note :- </b> If a regular expression does not include the g modifier (global search), match() will return only the first match in the string. <br><br>
+
+                    <b>matchAll method : </b>The matchAll() method returns an iterator containing the results of matching a string against a string (or a regular expression).
+                    <pre class="language-js"><code>string.matchAll(match)</code></pre>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p&gt;Perform a global, case-insensitive search for "ain":&lt;/p&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let text = "The rain in SPAIN stays mainly in the plain"; 
+    const myArr = text.matchAll(/ain/gi);
+    document.getElementById("demo").innerHTML = myArr.length + " " + myArr;
+&lt;/script&gt;</code></pre>
+
+                    <b>Note :- </b>matchAll() is an ES2020 feature.  <br><br>                    
+                    matchAll() does not work in Internet Explorer. <br><br>
+
+                    <b>includes method : </b>The includes() method returns true if a string contains a specified value.
+                    Otherwise it returns false.
+                    <pre class="language-js"><code>string.includes(searchvalue, start)</code></pre> 
+                    <b>Note :- </b>start is optional. <br><br>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p&gt;Check if a string includes "world":&lt;/p&gt;
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;p&gt;The includes() method is not supported in Internet Explorer.&lt;/p&gt;
+
+&lt;script&gt;
+let text = "Hello world, welcome to the universe.";
+document.getElementById("demo").innerHTML = text.includes("world");
+&lt;/script&gt;</code></pre>
+
+                    <b>Note :- </b>includes() is case sensitive. <br><br>
+                    includes() is an ES6 feature.       <br><br>              
+                    includes() is not supported in Internet Explorer. <br><br>
+
+                    <b>startsWith method : </b>The startsWith() method returns true if a string begins with a specified value.
+                    Otherwise it returns false:
+                    <pre class="language-js"><code>string.includes(searchvalue, start)</code></pre> 
+                    <b>Note :- </b>start is optional. <br><br>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;p&gt;The startsWith() method is not supported in Internet Explorer.&lt;/p&gt;
+
+&lt;script&gt;
+    let text = "Hello world, welcome to the universe.";
+    document.getElementById("demo").innerHTML = text.startsWith("world", 6);
+&lt;/script&gt;</code></pre>
+
+                    <b>Note :- </b>startsWith() is case sensitive. <br><br>
+                    startsWith() is an ES6 feature. <br><br>                   
+                    startsWith() is not supported in Internet Explorer. <br><br>
+
+                    <b>endsWith method : </b>The endsWith() method returns true if a string ends with a specified value.
+                    Otherwise it returns false:
+                    <pre class="language-js"><code>string.endsWith(searchvalue, length)</code></pre> 
+                    <b>Note :- </b>length is optional. <br><br>
+                    <p>Example</p>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;p&gt;The startsWith() method is not supported in Internet Explorer.&lt;/p&gt;
+
+&lt;script&gt;
+    let text = "Hello world, welcome to the universe.";
+    document.getElementById("demo").innerHTML = text.startsWith("world", 6);
+&lt;/script&gt;</code></pre>
+
+                    <b>Note :- </b>endsWith() is case sensitive. <br><br>
+                    endsWith() is an ES6 feature. <br><br>                   
+                    endsWith() is not supported in Internet Explorer. <br>
+                   
+                </li> <br>
+
+                <li><b>JavaScript Arrays : </b>The array is a collection of data items of the same type. In simple terms, it is a variable that contains multiple values. <br><br>
+                    An array is a special variable, which can hold more than one value: <br><br>
+                    eg. const cars = ["Saab", "Volvo", "BMW"]; <br><br>
+                    An array can hold many values under a single name, and you can access the values by referring to an <b>index</b> number. <br><br>
+                    <b>Creating an Array </b>Using an array literal is the easiest way to create a JavaScript Array. <br>
+                    <pre class="language-js"><code>const array_name = [item1, item2, ...];</code></pre>
+                    <pre class="language-js"><code>const cars = new Array("Saab", "Volvo", "BMW");</code></pre>
+                    <b>Note :- </b>It is a common practice to declare arrays with the const keyword. <br><br>
+                    Spaces and line breaks are not important. A declaration can span multiple lines: <br>
+                    eg... <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+&lt;script&gt;
+
+    const cars = [
+    "Saab",
+    "Volvo",
+    "BMW"
+    ];
+    document.getElementById("demo").innerHTML = cars;
+&lt;/script&gt;</code></pre> <br>
+
+                        <b>You can also create an array, and then provide the elements:</b>
+                        <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const cars = [];
+    cars[0]= "Saab";
+    cars[1]= "Volvo";
+    cars[2]= "BMW";
+    document.getElementById("demo").innerHTML = cars;
+&lt;/script&gt;</code></pre> <br>
+
+                            <b>Accessing Array Elements</b>
+                            <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const cars = ["Saab", "Volvo", "BMW"];
+    document.getElementById("demo").innerHTML = cars[0];
+&lt;/script&gt;</code></pre>
+ 
+                                <b>Note :- </b>Array indexes start with 0. <br><br>
+                                [0] is the first element. [1] is the second element. <br><br>
+
+                        <b>Converting an Array to a String : </b>The JavaScript method toString() converts an array to a string of (comma separated) array values. <br> <br>
+                        JavaScript automatically converts an array to a comma separated string when a primitive value is expected. <br><br>
+                        This is always the case when you try to output an array. <br>
+                        <pre class="language-js"><code>array.toString()</code></pre>
+                        <b>Note :- </b> All JavaScript objects have a toString() method. <br> <br>
+                        <p>Example</p>
+                        <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo").innerHTML = fruits.toString();
+&lt;/script&gt;</code></pre> <br>
+
+                        <b>join method :- </b>The join() method also joins all array elements into a string. <br><br>
+                        It behaves just like toString(), but in addition you can specify the separator: <br>
+                        <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo").innerHTML = fruits.join(" * ");
+&lt;/script&gt;</code></pre> <br>
+
+                        <b>Arrays are Objects : </b>Arrays are a special type of objects. The typeof operator in JavaScript returns "object" for arrays. <br> <br>
+                        But, JavaScript arrays are best described as arrays. <br> <br>                       
+                        Arrays use numbers to access its "elements". <br>
+                        <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const person = {firstName:"John", lastName:"Doe", age:46};
+    document.getElementById("demo").innerHTML = person.firstName;
+&lt;/script&gt;</code></pre> <br>
+
+                            <b>length method :- </b>The length property returns the length (size) of an array:
+                            <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    let size = fruits.length;
+    document.getElementById("demo").innerHTML = size;
+&lt;/script&gt;</code></pre> <br>
+
+                            <b>Popping and Pushing :- </b>When you work with arrays, it is easy to remove elements and add new elements. <br><br>                            
+                            Popping items out of an array, or pushing items into an array. <br><br>
+                            <b>pop method </b> The pop() method removes the last element from an array:
+                            <pre class="language-js"><code>&lt;p id="demo1"&gt;&lt;/p&gt;
+&lt;p id="demo2"&gt;&lt;/p&gt;
+                            
+&lt;script&gt;
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo1").innerHTML = fruits;
+    fruits.pop();
+    document.getElementById("demo2").innerHTML = fruits;
+&lt;/script&gt;</code></pre> <br>
+
+                                <b>The pop() method returns the value that was "popped out":</b>
+                                <pre class="language-js"><code>&lt;p id="demo1"&gt;&lt;/p&gt;
+&lt;p id="demo2"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const example = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo1").innerHTML = example.pop();
+    document.getElementById("demo2").innerHTML = example;
+&lt;/script&gt;</code></pre> <br>
+
+                            <b>push method </b> The push() method adds a new element to an array (at the end):
+                            <pre class="language-js"><code>&lt;p id="demo1"&gt;&lt;/p&gt;
+&lt;p id="demo2"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo1").innerHTML = fruits;
+    fruits.push("Kiwi");
+    document.getElementById("demo2").innerHTML = fruits;
+&lt;/script&gt;</code></pre> <br>
+
+                                <b>The push() method returns the new array length:</b>
+                                <pre class="language-js"><code>&lt;p id="demo1"&gt;&lt;/p&gt;
+&lt;p id="demo2"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const example = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo1").innerHTML = example.push("Kiwi");
+    document.getElementById("demo2").innerHTML = example;
+&lt;/script&gt;</code></pre> <br>
+
+                            <b>Shifting Elements :- </b>Shifting is equivalent to popping, but working on the first element instead of the last. <br><br>                            
+                            <b>shift method </b> The shift() method removes the first array element and "shifts" all other elements to a lower index.
+                            <pre class="language-js"><code>&lt;p id="demo1"&gt;&lt;/p&gt;
+&lt;p id="demo2"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo1").innerHTML = fruits;
+    fruits.shift();
+    document.getElementById("demo2").innerHTML = fruits;
+&lt;/script&gt;</code></pre> <br>
+
+                                <b>The shift() method returns the value that was "shifted out":</b>
+                                <pre class="language-js"><code>&lt;p id="demo1"&gt;&lt;/p&gt;
+&lt;p id="demo2"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const example = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo1").innerHTML = example.shift();
+    document.getElementById("demo2").innerHTML = example;
+&lt;/script&gt;</code></pre> <br>
+
+                            <b>unshift method </b> The unshift() method adds a new element to an array (at the beginning), and "unshifts" older elements:
+                            <pre class="language-js"><code>&lt;p id="demo1"&gt;&lt;/p&gt;
+&lt;p id="demo2"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo1").innerHTML = fruits;
+    fruits.unshift("Lemon");
+    document.getElementById("demo2").innerHTML = fruits;
+&lt;/script&gt;</code></pre> <br>
+
+                                <b>The unshift() method returns the new array length:</b>
+                                <pre class="language-js"><code>&lt;p id="demo1"&gt;&lt;/p&gt;
+&lt;p id="demo2"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const example = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo1").innerHTML = example.unshift("Lemon");
+    document.getElementById("demo2").innerHTML = example;
+&lt;/script&gt;</code></pre> <br>
+
+                <b>delete method </b> <br> <b>Warning !</b>
+                Array elements can be deleted using the JavaScript operator delete. <br><br>                
+                Using delete leaves undefined holes in the array. <br><br>                
+                Use pop() or shift() instead. <br>
+                <pre class="language-js"><code>&lt;p id="demo1"&gt;&lt;/p&gt;
+&lt;p id="demo2"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+    document.getElementById("demo1").innerHTML =
+    "The first fruit is: " + fruits[0];
+
+    delete fruits[0];
+
+    document.getElementById("demo2").innerHTML =
+    "The first fruit is: " + fruits[0];
+&lt;/script&gt;</code></pre> <br>
+
+                <b>Merging (Concatenating) Arrays </b> The concat() method creates a new array by merging (concatenating) existing arrays: <br><br>
+                <b>Example (Merging Two Arrays)</b> <br>
+                <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const myGirls = ["Cecilie", "Lone"];
+    const myBoys = ["Emil", "Tobias", "Linus"];
+    const myChildren = myGirls.concat(myBoys);
+
+    document.getElementById("demo").innerHTML = myChildren;
+&lt;/script&gt;</code></pre> 
+
+            <b>Note :- </b>The concat() method does not change the existing arrays. It always returns a new array.<br> <br>
+            The concat() method can take any number of array arguments: <br><br>
+            <b>Example (Merging Three Arrays)</b>
+            <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const array1 = ["Cecilie", "Lone"];
+    const array2 = ["Emil", "Tobias", "Linus"];
+    const array3 = ["Robin", "Morgan"];
+
+    const result = array1.concat(array2, array3); 
+
+    document.getElementById("demo").innerHTML = result;
+&lt;/script&gt;</code></pre>
+
+                    <b>Note :- </b>The concat() method can also take strings as arguments: <br><br>
+
+
+            <b>Flattening an Array </b>Flattening an array is the process of reducing the dimensionality of an array. <br><br>
+            The flat() method creates a new array with sub-array elements concatenated to a specified depth. <br>
+            <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const myArr = [[1,2],[3,4],[5,6]];
+
+    const newArr = myArr.flat();
+    document.getElementById("demo").innerHTML = newArr;
+&lt;/script&gt;</code></pre>
+
+                <b>Note :- </b>JavaScript Array flat() is supported in all modern browsers since January 2020: <br><br>
+
+                <b>Splicing and Slicing Arrays </b>The splice() method adds new items to an array. <br><br>
+                The slice() method slices out a piece of an array. <br> <br>
+                <b>splice method </b>The splice() method can be used to add new items to an array:
+            <pre class="language-js"><code>array.splice(index, howmany, item1, ....., itemX)</code></pre>
+            howmany, item1, ....., itemX are <b>optional</b> <br> <br>
+
+            <b>Example</b>
+            <pre class="language-js"><code>&lt;p id="demo1"&gt;&lt;/p&gt;
+&lt;p id="demo2"&gt;&lt;/p&gt;
+&lt;p id="demo3"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo1").innerHTML = "Original Array:&lt;br&gt; " + fruits;
+    let removed = fruits.splice(2, 2, "Lemon", "Kiwi"); 
+    document.getElementById("demo2").innerHTML = "New Array:&lt;br&gt;" + fruits;
+    document.getElementById("demo3").innerHTML = "Removed Items:&lt;br&gt; " + removed; 
+&lt;/script&gt;</code></pre>
+
+                    <b>Note :- </b>The splice() method returns an array with the deleted items: <br> <br>
+                    <b>Using splice() to Remove Elements</b> <br>
+                    <pre class="language-js"><code>array.splice(0, 1);</code></pre> <br>
+
+                <b>slice method </b> The slice() method slices out a piece of an array into a new array.
+            <pre class="language-js"><code>array.slice(start, end)</code></pre>
+            start & end are <b>optional</b> <br> <br>
+
+            <b>Example</b>
+            <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+    const citrus = fruits.slice(1);
+    document.getElementById("demo").innerHTML = fruits + "&lt;br&gt;&lt;br&gt;" + citrus;
+&lt;/script&gt;</code></pre>
+
+                <b>Note :- </b>The slice() method creates a new array. <br><br>
+                The slice() method does not remove any elements from the source array.
+
+                </li> <br>
+
+                <li><b>JavaScript Sorting Arrays : </b>There are no built-in functions for finding the highest or lowest value in a JavaScript array. <br> <br>
+                    <b>Sorting an Array </b> The sort() method sorts an array alphabetically:
+                    <pre class="language-js"><code>array.sort();</code></pre> <br>
+
+                    <b>Reversing an Array </b> The reverse() method reverses the elements in an array. <br><br>
+                    You can use it to sort an array in descending order:
+                    <pre class="language-js"><code>array.sort();
+array.reverse();</code></pre> <br>
+
+                    <b>Numeric Sort </b>
+                    <pre class="language-js"><code>&lt;p id="demo1"&gt;&lt;/p&gt;
+&lt;p id="demo2"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const points = [40, 100, 1, 5, 25, 10];
+    document.getElementById("demo1").innerHTML = points;  
+
+    points.sort(function(a, b){return a - b});
+    document.getElementById("demo2").innerHTML = points;
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>Sorting an Array in Random Order</b>
+                    <pre class="language-js"><code>&lt;button onclick="myFunction()"&gt;Click multiple times&lt;/button&gt;
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const points = [40, 100, 1, 5, 25, 10];
+    document.getElementById("demo").innerHTML = points;  
+
+    function myFunction() {
+    points.sort(function(){return 0.5 - Math.random()});
+    document.getElementById("demo").innerHTML = points;
+    }
+&lt;/script&gt;</code></pre>
+
+                </li> <br>
+
+                <li><b>JavaScript Array Iteration : </b>Array iteration methods operate on every array item. <br> <br>
+
+                    <b>forEach() method </b> The forEach() method calls a function (a callback function) once for each array element. <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const numbers = [45, 4, 9, 16, 25];
+
+    let txt = "";
+    numbers.forEach(myFunction);
+    document.getElementById("demo").innerHTML = txt;
+
+    function myFunction(value, index, array) {
+    txt += value + "&lt;br&gt;"; 
+    }
+&lt;/script&gt;</code></pre>
+                    <b>Note :- </b>When a callback function uses only the value parameter, the index and array parameters can be omitted: <br><br>
+
+                    <b>map() method </b> The map() method creates a new array by performing a function on each array element. <br><br>
+                    The map() method does not execute the function for array elements without values. <br><br>                    
+                    The map() method does not change the original array. <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const numbers = [45, 4, 9, 16, 25];
+
+    let txt = "";
+    numbers.forEach(myFunction);
+    document.getElementById("demo").innerHTML = txt;
+
+    function myFunction(value, index, array) {
+    txt += value + "&lt;br&gt;"; 
+    }
+&lt;/script&gt;</code></pre> 
+                <b>Note :- </b>When a callback function uses only the value parameter, the index and array parameters can be omitted: <br><br>
+
+                    <b>filter() method </b> The filter() method creates a new array with array elements that pass a test. <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const numbers = [45, 4, 9, 16, 25];
+    const over18 = numbers.filter(myFunction);
+
+    document.getElementById("demo").innerHTML = over18;
+
+    function myFunction(value) {
+    return value &gt; 18;
+    }
+&lt;/script&gt;</code></pre> 
+
+                    <b>reduce() method </b> The reduce() method runs a function on each array element to produce (reduce it to) a single value. <br><br>
+                    The reduce() method works from left-to-right in the array. <br> <br>
+                    The reduce() method does not reduce the original array. <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const numbers = [45, 4, 9, 16, 25];
+    let sum = numbers.reduce(myFunction);
+
+    document.getElementById("demo").innerHTML = "The sum is " + sum;
+
+    function myFunction(total, value, index, array) {
+    return total + value;
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>indexOf() method </b> The indexOf() method searches an array for an element value and returns its position. <br><br>
+                    <b>Note :- </b> The first item has position 0, the second item has position 1, and so on. <br>
+                    <pre class="language-js"><code>array.indexOf(item, start)</code></pre> 
+                    start is optional. <br><br>
+                    <b>Example</b>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const fruits = ["Apple", "Orange", "Apple", "Mango"];
+    let position = fruits.indexOf("Apple") + 1;
+
+    document.getElementById("demo").innerHTML = "Apple is found in position " + position;
+&lt;/script&gt; </code></pre>
+
+                        <b>Note :- </b>Array.indexOf() returns -1 if the item is not found. <br><br>
+                        If the item is present more than once, it returns the position of the first occurrence. <br><br>
+
+                    <b>find() method </b> The find() method returns the value of the first array element that passes a test function. <br><br>
+                    find() is an ES6 feature (JavaScript 2015). <br>
+                    <pre class="language-js"><code>array.find(function(currentValue, index, arr),thisValue)</code></pre> 
+                    index is optional. <br>
+                    arr is optional <br>
+                    thisValue is optional <br><br>
+                    <b>Example</b>
+                    <pre class="language-js"><code> &lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const numbers = [4, 9, 16, 25, 29];
+    let first = numbers.find(myFunction);
+
+    document.getElementById("demo").innerHTML = "First number over 18 is " + first;
+
+    function myFunction(value, index, array) {
+    return value &gt; 18;
+    }
+&lt;/script&gt;</code></pre>
+
+            <b>Note :- </b>The findIndex() method returns the index of the first array element that passes a test function. <br> <br>
+
+                    <b>Array.from() method </b> The Array.from() method returns an Array object from any object with a length property or any iterable object. <br><br>
+                    from() is an ES6 feature (JavaScript 2015). <br>
+                    <pre class="language-js"><code>Array.from(object, mapFunction, thisValue)</code></pre> 
+                    mapFunction is optional. <br>
+                    thisValue is optional <br><br>
+                    <b>Example</b>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const myArr = Array.from("ABCDEFG");
+    document.getElementById("demo").innerHTML = myArr;
+&lt;/script&gt;</code></pre>
+
+            <b>Note :- </b>from() is not supported in Internet Explorer.<br> <br>
+
+                    <b>Spread (...) method </b>The ... operator expands an iterable (like an array) into more elements:<br><br>
+                    ... is an ES6 feature (JavaScript 2015). <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const q1 = ["Jan", "Feb", "Mar"];
+    const q2 = ["Apr", "May", "Jun"];
+    const q3 = ["Jul", "Aug", "Sep"];
+    const q4 = ["Oct", "Nov", "May"];
+
+    const year = [...q1, ...q2, ...q3, ...q4];
+    document.getElementById("demo").innerHTML = year; 
+&lt;/script&gt;</code></pre>
+
+            <b>Note :- </b>... is not supported in Internet Explorer.<br>
+
+                </li> <br>
+
+                <li><b>Number Methods : </b> <br><br>
+                    <b>toString Method :- </b>The toString() method returns a number as a string. <br><br>
+                    All number methods can be used on any type of numbers (literals, variables, or expressions): <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let x = 123;
+    document.getElementById("demo").innerHTML =
+    x.toString() + "&lt;br&gt;" +
+    (123).toString() + "&lt;br&gt;" +
+    (100 + 23).toString();
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>toExponential Method:- </b>toExponential() returns a string, with a number rounded and written using exponential notation. <br><br>
+                    A parameter defines the number of characters behind the decimal point: <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let x = 9.656;
+    document.getElementById("demo").innerHTML =
+    x.toExponential() + "&lt;br&gt;" + 
+    x.toExponential(2) + "&lt;br&gt;" + 
+    x.toExponential(4) + "&lt;br&gt;" + 
+    x.toExponential(6);
+&lt;/script&gt;</code></pre>
+
+                        <b>Note :- </b>The parameter is optional. If you don't specify it, JavaScript will not round the number. <br><br>
+
+                    <b>toFixed Method :- </b>toFixed() returns a string, with the number written with a specified number of decimals: <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let x = 9.656;
+    document.getElementById("demo").innerHTML =
+    x.toFixed(0) + "&lt;br&gt;" +
+    x.toFixed(2) + "&lt;br&gt;" +
+    x.toFixed(4) + "&lt;br&gt;" +
+    x.toFixed(6);
+&lt;/script&gt;</code></pre>
+
+                    <b>Note :- </b>toFixed(2) is perfect for working with money.<br> <br>
+
+                    <b>toPrecision Method :- </b>toPrecision() returns a string, with a number written with a specified length:<br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let x = 9.656;
+    document.getElementById("demo").innerHTML = 
+    x.toPrecision() + "&lt;br&gt;" +
+    x.toPrecision(2) + "&lt;br&gt;" +
+    x.toPrecision(4) + "&lt;br&gt;" +
+    x.toPrecision(6);  
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>valueOf Method :- </b>valueOf() returns a number as a number.<br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        let x = 123;
+
+        document.getElementById("demo").innerHTML = 
+        x.valueOf() + "&lt;br&gt;" +
+        (123).valueOf() + "&lt;br&gt;" +
+        (100 + 23).valueOf();
+    &lt;/script&gt;</code></pre> 
+
+                        <b>Note :- </b>In JavaScript, a number can be a primitive value (typeof = number) or an object (typeof = object). <br><br>
+                        The valueOf() method is used internally in JavaScript to convert Number objects to primitive values. <br><br>                        
+                        There is no reason to use it in your code. <br><br>                        
+                        All JavaScript data types have a valueOf() and a toString() method. <br>
+
+                </li> <br>
+
+                <li><b>Converting Variables to Numbers : </b> <br><br>
+                    <b>Number Method </b>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    document.getElementById("demo").innerHTML = 
+    Number(true) + "&lt;br&gt;" +
+    Number(false) + "&lt;br&gt;" +
+    Number("10") + "&lt;br&gt;" + 
+    Number("  10") + "&lt;br&gt;" +
+    Number("10  ") + "&lt;br&gt;" +
+    Number(" 10  ") + "&lt;br&gt;" +
+    Number("10.33") + "&lt;br&gt;" + 
+    Number("10,33") + "&lt;br&gt;" +
+    Number("10 33") + "&lt;br&gt;" +
+    Number("John");
+&lt;/script&gt;</code></pre>
+                    <b>Note :- </b>If the number cannot be converted, NaN (Not a Number) is returned. <br><br>
+
+                    <b>Number Method Used on Dates </b> Number() can also convert a date to a number.
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let x = new Date("1970-01-01");
+    document.getElementById("demo").innerHTML = Number(x); 
+&lt;/script&gt;</code></pre>
+                    <b>Note :- </b>The Date() method returns the number of milliseconds since 1.1.1970. <br><br>
+
+                    The number of milliseconds between 1970-01-02 and 1970-01-01 is <b>86400000</b>: <br>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let x = new Date("1970-01-02");
+    document.getElementById("demo").innerHTML = Number(x); 
+&lt;/script&gt;</code></pre>
+            
+                </li> <br>
+
+                <li><b>Date Objects : </b>
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    const d = new Date("2022-03-25");
+    document.getElementById("demo").innerHTML = d;
+&lt;/script&gt;</code></pre>
+                    <b>Note :- </b>Date objects are static. The "clock" is not "running". <br><br>
+                    The computer clock is ticking, date objects are not.
+                </li> <br>
+                
+                <li><b>Math Object : </b>The JavaScript Math object allows you to perform mathematical tasks on numbers.
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    document.getElementById("demo").innerHTML = Math.PI;
+&lt;/script&gt;</code></pre>
+
+                        <b>Note :- </b>Unlike other objects, the Math object has no constructor. <br><br>
+                        The Math object is static.  <br><br>                      
+                        All methods and properties can be used without creating a Math object first. <br> <br>
+
+                <b>Math Properties (Constants) : </b>The syntax for any Math property is : <b>Math.property</b>.
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    document.getElementById("demo").innerHTML = 
+    "&lt;p&gt;&lt;b&gt;Math.E:&lt;/b&gt; " + Math.E + "&lt;/p&gt;" +
+    "&lt;p&gt;&lt;b&gt;Math.PI:&lt;/b&gt; " + Math.PI + "&lt;/p&gt;" +
+    "&lt;p&gt;&lt;b&gt;Math.SQRT2:&lt;/b&gt; " + Math.SQRT2 + "&lt;/p&gt;" +
+    "&lt;p&gt;&lt;b&gt;Math.SQRT1_2:&lt;/b&gt; " + Math.SQRT1_2 + "&lt;/p&gt;" +
+    "&lt;p&gt;&lt;b&gt;Math.LN2:&lt;/b&gt; " + Math.LN2 + "&lt;/p&gt;" +
+    "&lt;p&gt;&lt;b&gt;Math.LN10:&lt;/b&gt; " + Math.LN10 + "&lt;/p&gt;" +
+    "&lt;p&gt;&lt;b&gt;Math.LOG2E:&lt;/b&gt; " + Math.LOG2E + "&lt;/p&gt;" +
+    "&lt;p&gt;&lt;b&gt;Math.Log10E:&lt;/b&gt; " + Math.LOG10E + "&lt;/p&gt;";
+&lt;/script&gt;</code></pre> <br>
+
+                <b>Math Methods : </b>The syntax for Math any methods is : <b>Math.method(number)</b>. <br><br>
+                <b>Math.round() </b> Math.round(x) returns the nearest integer:
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    document.getElementById("demo").innerHTML = Math.round(4.6);
+&lt;/script&gt;</code></pre> <br>
+
+                <b>Math.ceil() </b> Math.ceil(x) returns the value of x rounded up to its nearest integer:
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    document.getElementById("demo").innerHTML = Math.ceil(4.7);
+&lt;/script&gt;</code></pre> <br>
+
+                <b>Math.floor() </b> Math.floor(x) returns the value of x rounded down to its nearest integer:
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    document.getElementById("demo").innerHTML = Math.floor(4.7);
+&lt;/script&gt;</code></pre> <br>
+
+                <b>Math.trunc() </b> Math.trunc(x) returns the integer part of x:
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    document.getElementById("demo").innerHTML = Math.trunc(4.7);
+&lt;/script&gt;</code></pre> <br>
+
+                <b>Math.random() </b> Math.random() returns a random number between 0 (inclusive), and 1 (exclusive):
+                    <pre class="language-js"><code>&lt;p&gt;Code to create 4 digit random opt number&lt;/p&gt;
+
+&lt;button onclick="document.getElementById('demo').innerHTML = getRndInteger(1000,9999)"&gt;Click Me&lt;/button&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                        <b>Note :- </b>Math.random() always returns a number lower than 1. <br><br>
+                        Math.random() used with Math.floor() can be used to return random integers. <br><br>
+                        You can also go through with the below methods : <br>
+                        Math.sign() <br>
+                        Math.pow() <br>
+                        Math.sqrt() <br>
+                        Math.abs() , etc...
+
+                </li> <br>
+
+                <li><b>HTML DOM Document : </b> <br><br>
+                    <b>getElementById()</b> <br>
+                    The getElementById() method returns an element with a specified value. <br><br>
+                    The getElementById() method returns null if the element does not exist. <br><br>
+                    The getElementById() method is one of the most common methods in the HTML DOM. It is used almost every time you want to read or edit an HTML element. <br>
+                    <pre class="language-js"><code>document.getElementById(elementID)</code></pre>
+                    <b>Note :- </b>Any id should be unique, but: <br><br>
+                    If two or more elements with the same id exist, getElementById() returns the first. <br> <br>
+
+                    <b>getElementsByClassName()</b>
+                    The getElementsByClassName() method returns a collection of elements with a specified class name(s). <br><br>
+                    The getElementsByClassName() method returns an HTMLCollection. <br><br>
+                    The getElementsByClassName() property is read-only. <br>
+                    <pre class="language-js"><code>document.getElementsByClassName(classname)</code></pre> <br>
+
+                    <b>getElementsByName()</b>
+                    The getElementsByName() method returns a collection of elements with a specified <name class="br"><br></name>
+                    The getElementsByName() method returns a live <NodeList class="br"></NodeList>
+                    <pre class="language-js"><code>getElementsByName()</code></pre> <br>
+
+                    <b>getElementsByTagName()</b>
+                    The getElementsByTagName() method returns a collection of all elements with a specified tag name. <br><br>
+                    The getElementsByTagName() method returns an HTMLCollection. <br><br>
+                    The getElementsByTagName() property is read-only. <br>
+                    <pre class="language-js"><code>document.getElementsByTagName(tagname)</code></pre>
+                    <b>Note :- </b> getElementsByTagName("*") returns all elements in the document.<br> <br>
+
+                    <b>querySelector </b>The querySelector() method returns the first element that matches a CSS selector. <br><br>
+                    To return all matches (not only the first), use the querySelectorAll() instead. <br><br>                    
+                    Both querySelector() and querySelectorAll() throw a SYNTAX_ERR exception if the selector(s) is invalid <br>
+                    <pre class="language-js"><code>document.querySelector(CSS selectors)</code></pre> <br>
+
+                    <b>querySelectorAll()</b> The querySelectorAll() method returns all elements that matches a CSS selector(s). <br><br>
+                    The querySelectorAll() method returns a NodeList.  <br><br>                  
+                    The querySelectorAll() method throws a SYNTAX_ERR exception if the selector(s) is invalid <br>
+                    <pre class="language-js"><code>document.querySelectorAll(CSS selectors)</code></pre>
+                </li> <br>
+
+                <li><b>HTML DOM MouseEvent : </b>HTML DOM allows JavaScript to react to HTML events: <br> <br>
+                    <b>Reacting to Events </b> A JavaScript can be executed when an event occurs, like when a user clicks on an HTML element. <br><br>
+                    To execute code when a user clicks on an element, add JavaScript code to an HTML event attribute: <br><br>
+                    <b>Examples of HTML events:</b> <br>
+                    When a user clicks the mouse <br>
+                    When a web page has loaded <br>
+                    When an image has been loaded <br>
+                    When the mouse moves over an element <br>
+                    When an input field is changed <br>
+                    When an HTML form is submitted <br>
+                    When a user strokes a key <br><br>
+                    <b>The content of the (h2) element is changed when a user clicks on it:</b> <br>
+                    <pre class="language-js"><code>&lt;h2 onclick="this.innerHTML='Ooops!'"&gt;Click on this text!&lt;/h2&gt;</code></pre> <br>
+                    
+                    
+                    <b>A function is called from the event handler:</b> <br>
+                    <pre class="language-js"><code>&lt;h2 onclick="changeText(this)"&gt;Click on this text!&lt;/h2&gt;
+
+&lt;script&gt;
+    function changeText(id) {
+    id.innerHTML = "Ooops!";
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>Assign an onclick event to a button element:</b> <br>
+                    <pre class="language-js"><code>&lt;button onclick="displayDate()"&gt;The time is?&lt;/button&gt;
+
+&lt;script&gt;
+    function displayDate() {
+    document.getElementById("demo").innerHTML = Date();
+    }
+&lt;/script&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;</code></pre> <br>
+
+                    <b>oncontextmenu Event</b> The oncontextmenu event occurs when the user right-clicks an HTML element to open the context menu. <br>
+                    <pre class="language-js"><code>&lt;div id="div01" style="border:1px solid black; padding:10px"&gt;
+    &lt;p&gt;Right-click in this box to see the hidden content!&lt;/p&gt;
+&lt;/div&gt;
+    
+&lt;div id="myDiv" style="visibility:hidden"&gt;
+    &lt;p&gt;This is Kaushal&lt;/p&gt;
+    &lt;p&gt;from SpecBits&lt;/p&gt;
+&lt;/div&gt;
+    
+&lt;script&gt;
+    // Assign an "contextmenu" event to div01:
+    document.getElementById("div01").addEventListener("contextmenu", myFunction);
+    
+    // Prevent default context menu:
+    const div = document.getElementById("div01");
+    div.addEventListener("contextmenu", (e) =&gt; {e.preventDefault()});
+    
+    // Show hidden content:
+    function myFunction() {
+        const div = document.getElementById("myDiv");
+        div.style.visibility = "visible";
+        }
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>ondblclick Event</b> The ondblclick event occurs when the user double-clicks on an HTML element.<br>
+                    <pre class="language-js"><code>&lt;p id="demo" ondblclick="myFunction()"&gt;Double-click me.&lt;/p&gt;
+
+&lt;script&gt;
+    function myFunction() {
+    document.getElementById("demo").innerHTML = "I was double-clicked!";
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>onmouseenter Event</b> The onmouseenter event occurs when the mouse pointer enters an element. <br><br>
+                    The onmouseenter event is often used together with the onmouseleave event, which occurs when the mouse pointer leaves an element.  <br><br>                  
+                    The onmouseenter event is similar to the onmouseover event. The difference is that the onmouseenter event does not bubble (does not propagate up the document hierarchy).<br>
+                    <pre class="language-js"><code>&lt;p&gt;Assign an "onmouseenter" and "onmouseleave" event to a h1 element.&lt;/p&gt;
+
+&lt;h1 id="demo"&gt;Mouse over me&lt;/h1&gt;
+
+&lt;script&gt;
+    document.getElementById("demo").onmouseenter = function() {mouseEnter()};
+    document.getElementById("demo").onmouseleave = function() {mouseLeave()};
+
+    function mouseEnter() {
+    document.getElementById("demo").style.color = "red";
+    }
+
+    function mouseLeave() {
+    document.getElementById("demo").style.color = "black";
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>onmouseleave Event</b> The onmouseleave event occurs when the mouse pointer leaves an element. <br><br>
+                    The onmouseleave event is often used together with the onmouseenter event, which occurs when the mouse pointer enters an element. <br><br>                    
+                    The onmouseleave event is similar to the onmouseout event. The difference is that the onmouseleave event does not bubble (does not propagate up the document hierarchy).<br><br>
+
+                    <b>onmousemove Event</b> The onmousemove event occurs when the pointer moves over an element. <br>
+                    <pre class="language-js"><code>&lt;div onmousemove="myMoveFunction()"&gt;
+    &lt;p&gt;onmousemove&lt;/p&gt;
+    &lt;p id="demo1"&gt;Mouse over me!&lt;/p&gt;
+&lt;/div&gt;      
+    
+&lt;script&gt;
+    let x = 0;
+    
+    function myMoveFunction() {
+    document.getElementById("demo1").innerHTML = x+=1;
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>The difference between the onmousemove, onmouseenter and mouseover events: </b> <br>
+                    <pre class="language-js"><code>&lt;div onmousemove="myMoveFunction()"&gt;
+    &lt;p&gt;onmousemove&lt;/p&gt;
+    &lt;p id="demo1"&gt;Mouse over me!&lt;/p&gt;
+&lt;/div&gt;
+    
+&lt;div onmouseenter="myEnterFunction()"&gt;
+    &lt;p&gt;onmouseenter&lt;/p&gt;
+    &lt;p id="demo2"&gt;Mouse over me!&lt;/p&gt;
+&lt;/div&gt;
+    
+&lt;div onmouseover="myOverFunction()"&gt;
+    &lt;p&gt;onmouseover&lt;/p&gt;
+    &lt;p id="demo3"&gt;Mouse over me!&lt;/p&gt;
+&lt;/div&gt;
+    
+    &lt;p&gt;The onmousemove event occurs every time the mouse pointer is moved over an element.&lt;/p&gt;
+    &lt;p&gt;The mouseenter event only occurs when the mouse pointer enters an element. &lt;/p&gt;
+    &lt;p&gt;The onmouseover event occurs when the mouse pointer enters an div element.&lt;/p&gt;
+    
+    
+&lt;script&gt;
+    let x = 0;
+    let y = 0;
+    let z = 0;
+    
+    function myMoveFunction() {
+    document.getElementById("demo1").innerHTML = z+=1;
+    }
+    
+    function myEnterFunction() {
+    document.getElementById("demo2").innerHTML = x+=1;
+    }
+    
+    function myOverFunction() {
+    document.getElementById("demo3").innerHTML = y+=1;
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>The onmouseover and onmouseout Events : </b> The onmouseover and onmouseout events can be used to trigger a function when the user mouses over, or out of, an HTML element: <br>
+                    <pre class="language-js"><code>&lt;div onmouseover="mOver(this)" onmouseout="mOut(this)" 
+    style="background-color:#D94A38;width:120px;height:150px;padding:30px;"&gt;
+    Mouse Over Me&lt;/div&gt;
+
+&lt;script&gt;
+    function mOver(obj) {
+    obj.innerHTML = "Thank You"
+    }
+
+    function mOut(obj) {
+    obj.innerHTML = "Mouse Over Me"
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>The onmousedown, onmouseup and onclick Events : </b> The onmousedown, onmouseup, and onclick events are all parts of a mouse-click. First when a mouse-button is clicked, the onmousedown event is triggered, then, when the mouse-button is released, the onmouseup event is triggered, finally, when the mouse-click is completed, the onclick event is triggered. <br>
+                    <pre class="language-js"><code>&lt;div onmousedown="mDown(this)" onmouseup="mUp(this)"
+    style="background-color:#D94A38;width:100px;height:120px;padding:40px;"&gt;
+    Click Me&lt;/div&gt;
+
+&lt;script&gt;
+    function mDown(obj) {
+    obj.style.backgroundColor = "#1ec5e5";
+    obj.innerHTML = "Release Me";
+    }
+
+    function mUp(obj) {
+    obj.style.backgroundColor="#D94A38";
+    obj.innerHTML="Thank You";
+    }
+&lt;/script&gt;</code></pre>
+
+                </li> <br>
+
+                <li><b>HTML DOM KeyboardEvent : </b>The KeyboardEvent Object handles events that occur when a user presses a key on the keyboard. <br><br>
+
+                    <b>onkeypress Event </b> The onkeypress event occurs when the user presses a key on the keyboard. 
+                    <pre class="language-js"><code>&lt;p&gt;Press a key in the input field:&lt;/p&gt;
+
+&lt;input type="text" id="demo"&gt;
+
+&lt;script&gt;
+    document.getElementById("demo").onkeypress = function() {myFunction()};
+
+    function myFunction() {
+    document.getElementById("demo").style.backgroundColor = "red";
+    }
+&lt;/script&gt;</code></pre>
+
+                <b>Note :-</b>The onkeypress event is deprecated. <br><br>
+                It is not fired for all keys (like ALT, CTRL, SHIFT, ESC) in all browsers. <br><br>                    
+                To detect if the user presses a key, always use the onkeydown event. It works for all keys. <br> <br>
+
+                    <b>onkeydown Event </b> The onkeydown event occurs when the user presses a key on the keyboard. 
+                    <pre class="language-js"><code>&lt;p&gt;Press a key in the input field:&lt;/p&gt;
+
+&lt;input type="text" onkeydown="myFunction(this)"&gt;
+
+&lt;script&gt;
+    function myFunction(element) {
+    element.style.backgroundColor = "red";
+    }
+&lt;/script&gt;</code></pre>
+                    <b>Note :-</b>The onkeypress event is deprecated. <br><br>
+                    It is not fired for all keys (like ALT, CTRL, SHIFT, ESC) in all browsers. <br><br>                    
+                    To detect if the user presses a key, always use the onkeydown event. It works for all keys. <br> <br>
+
+                    <b>onkeyup Event </b> The onkeyup event occurs when the user releases a key on the keyboard. 
+                    <pre class="language-js"><code>&lt;p&gt;The function transforms the input field to upper case:&lt;/p&gt;
+
+Enter your name: &lt;input type="text" id="fname"&gt;
+
+&lt;script&gt;
+    document.getElementById("fname").addEventListener("keyup", myFunction);
+
+    function myFunction() {
+    let x = document.getElementById("fname");
+    x.value = x.value.toUpperCase();
+    }
+&lt;/script&gt;</code></pre>
+                    <b>Note :-</b>The onkeypress event is deprecated. <br><br>
+                    It is not fired for all keys (like ALT, CTRL, SHIFT, ESC) in all browsers. <br><br>                    
+                    To detect if the user presses a key, always use the onkeydown event. It works for all keys. <br> <br>
+
+                    <b>Using "onkeydown" together with the "onkeyup" event:</b>
+                    <pre class="language-js"><code>&lt;input type="text" id="demo" onkeydown="keydownFunction()" onkeyup="keyupFunction()"&gt;
+
+&lt;script&gt;
+    function keydownFunction() {
+    document.getElementById("demo").style.backgroundColor = "red";
+    }
+
+    function keyupFunction() {
+    document.getElementById("demo").style.backgroundColor = "green";
+    }
+&lt;/script&gt;</code></pre>
+
+                </li> <br>
+
+                <li> <b>Form Events</b> <br><br>
+                    <b>HTML onsubmit Event Attribute : </b>The onsubmit attribute fires when a form is submitted.
+                    <pre class="language-js"><code>&lt;form onsubmit="script"&gt;</code></pre> <br>
+                        <b>Example</b>
+                    <pre class="language-js"><code>&lt;p&gt;When you submit the form, a function is triggered which alerts some text.&lt;/p&gt;
+
+&lt;form onsubmit="myFunction()"&gt;
+    Enter name: &lt;input type="text" name="fname"&gt;
+    &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+    function myFunction() {
+    alert("The form was submitted");
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>HTML onchange Event Attribute : </b>The onchange attribute fires the moment when the value of the element is changed.
+                    <pre class="language-js"><code>&lt;form onsubmit="script"&gt;</code></pre> <br>
+                        <b>Example</b>
+                        <pre class="language-js"><code>Enter your name: &lt;input type="text" id="fname" onchange="upperCase()"&gt;
+    &lt;p&gt;When you leave the input field, a function is triggered which transforms the input text to upper case.&lt;/p&gt;
+
+&lt;script&gt;
+    function upperCase() {
+    const x = document.getElementById("fname");
+    x.value = x.value.toUpperCase();
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>HTML onfocus Event Attribute : </b>The onfocus attribute fires the moment that the element gets focus. <br><br>
+                    Onfocus is most often used with (input), (select), and (a). <br><br>                    
+                    Tip: The onfocus attribute is the opposite of the onblur attribute. <br>
+                    <pre class="language-js"><code>&lt;element onfocus="script"&gt;</code></pre> <br>
+                        <b>Example</b> <br>
+                        <pre class="language-js"><code>Enter your name: &lt;input type="text" id="myInput" onfocus="focusFunction()" onblur="blurFunction()"&gt;
+
+&lt;script&gt;
+    // Focus = Changes the background color of input to yellow
+    function focusFunction() {
+    document.getElementById("myInput").style.background = "yellow";
+    }
+
+    // No focus = Changes the background color of input to red
+    function blurFunction() {
+    document.getElementById("myInput").style.background = "red";
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>HTML onblur Event Attribute : </b>The onblur attribute fires the moment that the element loses focus. <br><br>
+                    Onblur is most often used with form validation code (e.g. when the user leaves a form field). <br><br>                    
+                    Tip: The onblur attribute is the opposite of the onfocus attribute. <br>
+                        <pre class="language-js"><code>&lt;element onblur="script"&gt;</code></pre> <br>
+                        <b>Example</b> <br>
+                        <pre class="language-js"><code>Enter your name: &lt;input type="text" name="fname" id="fname" onblur="myFunction()"&gt;
+
+&lt;p&gt;When you leave the input field, a function is triggered which transforms the input text to upper case.&lt;/p&gt;
+
+&lt;script&gt;
+    function myFunction() {
+    let x = document.getElementById("fname");
+    x.value = x.value.toUpperCase();
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                </li> <br>
+
+                <li><b>JavaScript Popup Boxes : </b> JavaScript has three kind of popup boxes: Alert box, Confirm box, and Prompt box. <br><br>
+                    <b>Alert box</b> An alert box is often used if you want to make sure information comes through to the user. <br><br>
+                    When an alert box pops up, the user will have to click "OK" to proceed. <br>
+                        <pre class="language-js"><code>window.alert("sometext");</code></pre>
+                    <b>Example</b>
+                    <pre class="language-js"><code>&lt;button onclick="myFunction()"&gt;Try it&lt;/button&gt;
+
+&lt;script&gt;
+    function myFunction() {
+    alert("I am an alert box!");
+    }
+&lt;/script&gt;</code></pre>
+
+                <b>Note :- </b>The window.alert() method can be written without the window prefix. <br><br>
+
+                    <b>Confirm Box </b> A confirm box is often used if you want the user to verify or accept something. <br> <br>
+                    When a confirm box pops up, the user will have to click either "OK" or "Cancel" to proceed. <br> <br>                    
+                    If the user clicks "OK", the box returns true. If the user clicks "Cancel", the box returns false. <br>
+                    <pre class="language-js"><code>window.confirm("sometext");</code></pre>
+                    <b>Example</b>
+                    <pre class="language-js"><code>&lt;button onclick="myFunction()"&gt;Try it&lt;/button&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    function myFunction() {
+    var txt;
+    if (confirm("Press a button!")) {
+        txt = "You pressed OK!";
+    } else {
+        txt = "You pressed Cancel!";
+    }
+    document.getElementById("demo").innerHTML = txt;
+    }
+&lt;/script&gt;</code></pre>
+
+                <b>Note :- </b>The window.alert() method can be written without the window prefix. <br><br>
+
+                    <b>Prompt Box </b> A prompt box is often used if you want the user to input a value before entering a page. <br><br>
+                    When a prompt box pops up, the user will have to click either "OK" or "Cancel" to proceed after entering an input value.  <br><br>                  
+                    If the user clicks "OK" the box returns the input value. If the user clicks "Cancel" the box returns null. <br>
+                    <pre class="language-js"><code>window.prompt("sometext","defaultText");</code></pre>
+                    <b>Example</b>
+                    <pre class="language-js"><code>&lt;button onclick="myFunction()"&gt;Try it&lt;/button&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    function myFunction() {
+    let text;
+    let person = prompt("Please enter your name:", "Harry Potter");
+    if (person == null || person == "") {
+        text = "User cancelled the prompt.";
+    } else {
+        text = "Hello " + person + "! How are you today?";
+    }
+    document.getElementById("demo").innerHTML = text;
+    }
+&lt;/script&gt;</code></pre>
+
+                <b>Note :- </b>The window.alert() method can be written without the window prefix. <br><br>
+
+                    <b>Line Breaks </b> To display line breaks inside a popup box, use a back-slash followed by the character n. <br>
+                    <pre class="language-js"><code>alert("Hello\nHow are you?");</code></pre>
+
+                </li> <br>
+
+                <li><b>JavaScript HTML DOM EventListener : </b> <br><br>
+                    <b>The addEventListener() method </b> The addEventListener() method attaches an event handler to the specified element. <br><br>
+                    The addEventListener() method attaches an event handler to an element without overwriting existing event handlers. <br><br>                    
+                    You can add many event handlers to one element. <br><br>                    
+                    You can add many event handlers of the same type to one element, i.e two "click" events. <br><br>                    
+                    You can add event listeners to any DOM object not only HTML elements. i.e the window object. <br><br>                   
+                    The addEventListener() method makes it easier to control how the event reacts to bubbling. <br><br>                   
+                    When using the addEventListener() method, the JavaScript is separated from the HTML markup, for better readability and allows you to add event listeners even when you do not control the HTML markup. <br><br>                    
+                    You can easily remove an event listener by using the removeEventListener() method. <br> <br>
+                    <b>Syntax</b>
+                    <pre class="language-js"><code>element.addEventListener(event, function, useCapture);</code></pre>
+                    The first parameter is the type of the event (like "click" or "mousedown" or any other HTML DOM Event.) <br><br>
+                    The second parameter is the function we want to call when the event occurs. <br><br>
+                    The third parameter is a boolean value specifying whether to use event bubbling or event capturing. This parameter is optional. <br><br>
+                    <b>Note that you don't use the "on" prefix for the event; use "click" instead of "onclick".</b> <br><br>
+                    <b>Add an Event Handler to an Element</b> <br>
+                    <pre class="language-js"><code>&lt;button id="myBtn"&gt;Try it&lt;/button&gt;
+
+&lt;script&gt;
+    document.getElementById("myBtn").addEventListener("click", function() {
+    alert("Hello Kaushal");
+    });
+&lt;/script&gt;</code></pre>
+
+                    <pre class="language-js"><code>&lt;button id="myBtn"&gt;Try it&lt;/button&gt;
+
+&lt;script&gt;
+    document.getElementById("myBtn").addEventListener("click", myFunction);
+
+    function myFunction() {
+    alert ("Hello Kaushal , Welcome to Specbits");
+    }
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>Passing Parameters </b> When passing parameter values, use an "anonymous function" that calls the specified function with the parameters: <br>
+                    <pre class="language-js"><code>&lt;p&gt;Click the button to perform a calculation.&lt;/p&gt;
+&lt;button id="myBtn"&gt;Try it&lt;/button&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    let p1 = 5;
+    let p2 = 7;
+    document.getElementById("myBtn").addEventListener("click", function() {
+    myFunction(p1, p2);
+    });
+
+    function myFunction(a, b) {
+    document.getElementById("demo").innerHTML = a * b;
+    }
+&lt;/script&gt;</code></pre> <br>
+
+
+                    <b>The removeEventListener() method </b> The removeEventListener() method removes event handlers that have been attached with the addEventListener() method: <br>
+                    <pre class="language-js"><code>&lt;style&gt;
+#myDIV {
+    background-color: coral;
+    border: 1px solid;
+    padding: 50px;
+    color: white;
+    font-size: 20px;
+}
+&lt;/style&gt;
+&lt;div id="myDIV"&gt;
+    &lt;p&gt;This div element has an onmousemove event handler that displays a random number every time you move your mouse inside this orange field.&lt;/p&gt;
+    &lt;p&gt;Click the button to remove the div's event handler.&lt;/p&gt;
+    &lt;button onclick="removeHandler()" id="myBtn"&gt;Remove&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    document.getElementById("myDIV").addEventListener("mousemove", myFunction);
+
+    function myFunction() {
+    document.getElementById("demo").innerHTML = Math.random();
+    }
+
+    function removeHandler() {
+    document.getElementById("myDIV").removeEventListener("mousemove", myFunction);
+    }
+&lt;/script&gt;</code></pre>
+
+                </li> <br>
+
+                <li><b>Window Event Attributes : </b> <br><br>
+                    <b>HTML onload Event Attribute </b> The onload attribute fires when an object has been loaded. <br><br>
+                    onload is most often used within the (body) element to execute a script once a web page has completely loaded all content (including images, script files, CSS files, etc.). However, it can be used on other elements as well. <br><br>                 
+                    The onload attribute can be used to check the visitor's browser type and browser version, and load the proper version of the web page based on the information.  <br><br>                  
+                    The onload attribute can also be used to deal with cookies. <br>
+                    <pre class="language-js"><code>&lt;element onload="script"&gt;</code></pre> <br>
+                    <b>Example</b>
+                    <pre class="language-js"><code>&lt;body onload="checkCookies()"&gt;
+
+    &lt;p id="demo"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        function checkCookies() {
+        let text = "";
+        if (navigator.cookieEnabled == true) {
+            text = "Cookies are enabled.";
+        } else {
+            text = "Cookies are not enabled.";
+        }
+        document.getElementById("demo").innerHTML = text;
+        }
+    &lt;/script&gt;
+
+&lt;/body&gt;</code></pre> <br> 
+
+                    <b>HTML onunload Event Attribute </b> The onunload attribute fires once a page has unloaded (or the browser window has been closed). <br><br>
+                    onunload occurs when the user navigates away from the page (by clicking on a link, submitting a form, closing the browser window, etc.) <br><br>                    
+                    Note: If you reload a page, you will also trigger the onunload event (and the onload event). <br>
+                    <pre class="language-js"><code>&lt;element onunload="script"&gt;</code></pre> <br>
+
+                    <b>HTML onresize Event Attribute </b> The onresize attribute fires when the browser window is resized.<br>
+                    <pre class="language-js"><code>&lt;element onresize="script"&gt;</code></pre> <br>
+
+                </li> <br>
+
+                <li><b>JavaScript Window Location : </b>The window.location object can be used to get the current page address (URL) and to redirect the browser to a new page. <br> <br>
+                    <b>Window Location Href </b> The window.location.href property returns the URL of the current page.
+                    <pre class="language-js"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    document.getElementById("demo").innerHTML = 
+    "The full URL of this page is:&lt;br&gt;" + window.location.href;
+&lt;/script&gt;</code></pre> <br>
+
+                    <b>Window Location Assign </b> The window.location.assign() method loads a new document.
+                    <pre class="language-js"><code>&lt;input type="button" value="Load new document" onclick="newDoc()"&gt;
+
+&lt;script&gt;
+    function newDoc() {
+    window.location.assign("https://developersarmy.com")
+    }
+&lt;/script&gt;</code></pre>
+
+                        <b>Note :- </b> Go through with the given below window object. <br><br>
+                        <b>window.location.hostname</b> returns the domain name of the web host <br>
+                        <b>window.location.pathname</b> returns the path and filename of the current page <br>
+                        <b>window.location.protocol</b> returns the web protocol used (http: or https:) 
+
+                </li> <br>
+
+                <li><b>JavaScript Window History : </b>The window.history object contains the browsers history. <br><br>
+                    <b>Window History </b> The window.history object can be written without the window prefix. <br> <br>
+                    To protect the privacy of the users, there are limitations to how JavaScript can access this object. <br><br>                   
+                    Some methods:  <br>                  
+                    <b>history.back()</b> - same as clicking back in the browser <br>
+                    <b>history.forward()</b> - same as clicking forward in the browser <br>
+                    <!-- <pre class="language-js"><code>&lt;script type="text/javascript"&gt; //JS code goes here &lt;/script&gt;</code></pre> -->
+                </li> <br>
+
+                <li><b>JavaScript Timing Events : </b>
+                    <pre class="language-js"><code>&lt;p&gt;A script on this page starts this clock:&lt;/p&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;button onclick="clearInterval(myVar)"&gt;Stop time&lt;/button&gt;
+
+&lt;script&gt;
+    let myVar = setInterval(myTimer ,1000);
+    function myTimer() {
+    const d = new Date();
+    document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+    }
+&lt;/script&gt;</code></pre>
+                </li> <br>
+
+        </ol>
+
+        <footer>
+            <p style="color: gray;">Copyright &copy2023 specbits.com</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
